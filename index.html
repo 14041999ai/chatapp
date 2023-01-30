@@ -36,6 +36,21 @@
             }
         });
 
+        // new user added notification
+        socket.on("user_connect", function(msg){
+            console.log(msg);
+            var item = document.createElement('li');
+            item.textContent=msg;
+            messages.append(item);
+        })
+
+        socket.on("user_disconnect", function(msg){
+            console.log(msg);
+            var item = document.createElement('li');
+            item.textContent=msg;
+            messages.append(item);
+        })
+
         socket.on('chat message', function(msg){
             var item = document.createElement('li');
             item.textContent=msg;

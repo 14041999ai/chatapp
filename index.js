@@ -11,9 +11,10 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
     console.log("a user connected.");
-    
+    socket.broadcast.emit("user_connect", "New user connected")
     socket.on('disconnect', function(){
         console.log("user disconnected");
+        socket.broadcast.emit("user_disconnect", "User disconnected")
     })
 })
 
